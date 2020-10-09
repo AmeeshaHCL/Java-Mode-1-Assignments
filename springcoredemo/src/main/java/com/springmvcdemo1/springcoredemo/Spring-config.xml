@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:context="http://www.springframework.org/schema/context"
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context.xsd">
+
+<bean
+    class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+    <property name="locations">
+		<list>
+   			<value>classpath*:/com/demo18/one.properties</value>
+   			<value>classpath*:/com/demo18/two.properties</value>
+		</list>
+
+	</property>
+</bean>
+
+ <!-- <bean id="employee1" class="com.springmvcdemo1.springcoredemo.Employee" >
+   <constructor-arg value="lastname" index="2"></constructor-arg>
+   <constructor-arg value="22" index="0">  </constructor-arg>
+   <constructor-arg value="22 argument" index="1"></constructor-arg>
+  --> 
+  <!-- Constructor based injection -->
+  <bean id="employee1" class="com.springmvcdemo1.springcoredemo.Employee" autowire="no" >
+   <!-- <constructor-arg value="lastname" name="lastName"></constructor-arg>
+   <constructor-arg value="44" name="empNo">  </constructor-arg>
+   <constructor-arg value="44 argument" name="empName"></constructor-arg>  -->
+   
+   
+   <property name="empNo" value="12"></property>
+   <property name="empName" value="Ameesha"></property>
+   <property name="lastName" value="through set"></property>
+   <!-- <property name="var" ref="addressID"></property>--> <!-- Wiring -->
+  
+  <property name="addresses">
+   <list>
+   		<ref bean="address1"/>
+   		<ref bean ="address2"/>
+   		
+   	</list>
+   		</property>
+   
+  
+   
+   
+   </bean>
+   
+ 
+   
+   
+   
+     
+   <!-- Setter based injection -->
+   
+    <bean id="address1" class="com.springmvcdemo1.springcoredemo.Address" ><!-- init-method="add" destroy-method="sub"  -->
+    <property name="doorNo" value="200"></property>
+    <property name="city" value="Banglore"></property>
+    <!-- <property name="state" value="Karnataka"></property> -->
+    </bean>
+    <bean id="address2" class="com.springmvcdemo1.springcoredemo.Address" >
+    <property name="doorNo" value="400"></property>
+    <property name="city" value="Lucknow"></property>
+    
+    </bean>
+   
+   
+ 
+</beans >
